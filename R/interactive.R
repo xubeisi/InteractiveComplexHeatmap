@@ -37,6 +37,32 @@
 #     ht = draw(ht)
 #     selectArea(ht)
 # }
+`/.unit` <- function (x, y) {
+  x <- convertUnit(x, "pt")
+  x <- as.numeric(x)
+  unit(x / y, "pt")
+}
+is.unit <- function(x) {
+  inherits(x, 'unit')
+}
+is.newUnit <- function(x) {
+  inherits(x, 'unit_v2')
+}
+upgradeUnit <- function(x) {
+  if (is.newUnit(x)) return(x)
+  UseMethod("upgradeUnit")
+}
+upgradeUnit.unit <- function(x) {
+  unit(unclass(x), attr(x, "unit"), attr(x, 'data'))
+}
+unitType = function (x, recurse = FALSE)
+{
+  x <- upgradeUnit(x)
+  names <- rep_len(as.character(attr(x, "unit")),
+                   length(x))
+  names
+}
+
 selectArea = function(ht_list = get_last_ht(), pos1 = NULL, pos2 = NULL, mark = TRUE, verbose = TRUE,
 	ht_pos = NULL, include_annotation = FALSE, calibrate = TRUE) {
 
