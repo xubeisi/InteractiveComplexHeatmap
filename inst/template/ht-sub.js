@@ -66,7 +66,7 @@ $(function() {
 		width = parseInt(width);
 		var height = $('#@{heatmap_id}_sub_heatmap_input_height').val();
 		height = parseInt(height);
-		if(parseInt($(this).find('input').filter(':checked').val()) == 2) {
+		if(parseInt($(this).find('input').filter(':checked').val()) > 1) {
 			width_in_inch = Math.round(width*10/100*4/3)/10;
 			height_in_inch = Math.round(height*10/100*4/3)/10;
 			$('#@{heatmap_id}_sub_heatmap_download_image_width').val(width_in_inch);

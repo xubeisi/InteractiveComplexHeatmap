@@ -411,7 +411,7 @@ makeInteractiveComplexHeatmap = function(input, output, session, ht_list,
 			
 			if(fm == "png") {
 				dev(temp, width = width*2, height = height*2, res = 72*2)
-			} else if(fm == "pdf") {
+			} else if(fm %in% c("pdf","svg")) {
 				dev(temp, width = width/100*4/3, height = height/100*4/3)
 			} else {
 				dev(temp, width = width, height = height)
