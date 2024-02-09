@@ -481,7 +481,7 @@ originalHeatmapOutput = function(heatmap_id, title = NULL,
 					tabPanel(HTML("<i class='fa fa-images'></i>"),
 						div(
 							id = qq('@{heatmap_id}_tabs-save-image'),
-							radioButtons(qq("@{heatmap_id}_heatmap_download_format"), label = "Which format?", choices = list("png" = 1, "pdf" = 2, "svg" = 3), selected = 1, inline = TRUE),
+							radioButtons(qq("@{heatmap_id}_heatmap_download_format"), label = "Which format? (need change value after drag resize)", choices = list("png" = 1, "pdf" = 2, "svg" = 3), selected = 1, inline = TRUE),
 							numericInput(qq("@{heatmap_id}_heatmap_download_image_width"), label = "Image width (in px)", value = 0),
 							numericInput(qq("@{heatmap_id}_heatmap_download_image_height"), label = "Image height (in px)", value = 0),
 							downloadButton(qq("@{heatmap_id}_heatmap_download_button"), "Save image")
