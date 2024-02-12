@@ -36,7 +36,7 @@ $(function() {
 			$('#@{heatmap_id}_heatmap_input_width').val(ui.size.width - 4);
 			$('#@{heatmap_id}_heatmap_input_height').val(ui.size.height - 4);
 
-			if(parseInt($('#@{heatmap_id}_heatmap_download_format').find('input').filter(':checked').val()) == 2) {
+			if(parseInt($('#@{heatmap_id}_heatmap_download_format').find('input').filter(':checked').val()) > 1) {
 				width_in_inch = Math.round((ui.size.width - 4)*10/100*4/3)/10;
 				height_in_inch = Math.round((ui.size.height - 4)*10/100*4/3)/10;
 				$('#@{heatmap_id}_heatmap_download_image_width').val(width_in_inch);
@@ -45,6 +45,9 @@ $(function() {
 				$('#@{heatmap_id}_heatmap_download_image_width').val(ui.size.width - 4);
 				$('#@{heatmap_id}_heatmap_download_image_height').val(ui.size.height - 4);
 			}
+			
+			Shiny.setInputValue("@{heatmap_id}_heatmap_download_image_width", width);
+		  Shiny.setInputValue("@{heatmap_id}_heatmap_download_image_height", height);
 		},
 		zIndex: 0,
 		containment: @{containment}
@@ -79,6 +82,9 @@ $(function() {
 		Shiny.resetBrush("@{heatmap_id}_heatmap_brush");
 
 		Shiny.setInputValue("@{heatmap_id}_heatmap_resize_button", Math.random());
+		
+		Shiny.setInputValue("@{heatmap_id}_heatmap_download_image_width", width);
+		Shiny.setInputValue("@{heatmap_id}_heatmap_download_image_height", height);
 	});
 
 	$('#@{heatmap_id}_heatmap_download_format').change( function() {
@@ -99,6 +105,9 @@ $(function() {
 			$('#@{heatmap_id}_heatmap_download_image_width').prev().text('Image width (in px)');
 			$('#@{heatmap_id}_heatmap_download_image_height').prev().text('Image height (in px)');
 		}
+		
+		Shiny.setInputValue("@{heatmap_id}_heatmap_download_image_width", width);
+		Shiny.setInputValue("@{heatmap_id}_heatmap_download_image_height", height);
 	});
 
 	if(@{tolower(as.character(has_brush_response))} || @{tolower(as.character(only_brush_output_response))}) {

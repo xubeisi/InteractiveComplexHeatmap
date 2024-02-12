@@ -394,7 +394,8 @@ makeInteractiveComplexHeatmap = function(input, output, session, ht_list,
 		filename = function() {
 			format = as.numeric(input[[qq("@{heatmap_id}_heatmap_download_format")]])
 			fm = c("png", "pdf", "svg")[format]
-			qq("@{heatmap_id}_heatmap.@{fm}")
+			tmptmp <- sub(" ","-",Sys.time())
+			qq("FigCAB_Heatmap_@{tmptmp}.@{fm}")
 		},
 		content = function(file) {
 			
@@ -736,7 +737,8 @@ makeInteractiveComplexHeatmap = function(input, output, session, ht_list,
 			filename = function() {
 				format = as.numeric(input[[qq("@{heatmap_id}_sub_heatmap_download_format")]])
 				fm = c("png", "pdf", "svg")[format]
-				qq("@{heatmap_id}_sub_heatmap.@{fm}")
+				tmptmp <- sub(" ","-",Sys.time())
+				qq("FigCAB_SubHeatmap_@{tmptmp}.@{fm}")
 			},
 			content = function(file) {
 				
