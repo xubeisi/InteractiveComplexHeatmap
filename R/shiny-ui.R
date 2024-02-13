@@ -105,7 +105,7 @@ InteractiveComplexHeatmapOutput = function(heatmap_id = NULL,
 			action = action, response = response, internal = internal)
 
 		ui = fluidPage(class = qq("@{heatmap_id}_widget"),
-			# htmlOutput(qq("@{heatmap_id}_warning")),
+			htmlOutput(qq("@{heatmap_id}_warning")),
 			main_heatmap_ui,
 			output_ui,
 			...
@@ -421,7 +421,7 @@ originalHeatmapOutput = function(heatmap_id, title = NULL,
     		 add_js_css_dep(heatmap_id, js_file = "ht-main.js", css_file = "ht-main.css")
     	),
 
-    	# htmlOutput(qq("@{heatmap_id}_warning")),
+    	htmlOutput(qq("@{heatmap_id}_warning")),
 
 		if(identical(title, NULL) || identical(title, "")) NULL else h5(title),
 
